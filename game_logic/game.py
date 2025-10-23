@@ -11,17 +11,18 @@ def create_player(name:str='Ai') -> dict:
 
 
 def init_game()->dict:
-    players=[]
 
-    players.append(create_player())
-    players.append(create_player(input('Please enter your name.')))
+    p2=create_player()
+    p1=create_player(input('Please enter your name.'))
     deck1=deck.create_deck()
     deck1=deck.shuffle(deck1)
     for i in range(52):
         if i < 26:
-            players[1]['hand'].append(deck1[i])
+           p1['hand'].append(deck1[i])
         else:
-            players[0]['hand'].append(deck1[i])
+            p2['hand'].append(deck1[i])
+    players={"player_1":p1,'player_2':p2,'deck':deck1}
+
     return players
 
 
@@ -29,5 +30,18 @@ def init_game()->dict:
 
 
 def  play_round(p1:dict,p2:dict):
-    pass
+    p1_rotation = p1["hand"].pop(-1)
+    p2_rotation = p2["hand"].pop(-1)
+    if p1_rotation['value'] > p2_rotation['value']:
+        p1['won_pile'].append(p1_rotation,p2_rotation)
+        print(p1['name'],'winner')
+    elif p2_rotation['value'] > p1_rotation['value']:
+        p2['won_pile'].append(p1_rotation,p2_rotation)
+        print(p2['name'],'winner')
+    else:
+         print('draw')
+
+
+
+
 

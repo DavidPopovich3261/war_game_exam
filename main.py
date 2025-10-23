@@ -2,11 +2,11 @@ import random
 from game_logic import game
 
 a=game.init_game()
-print(len(a[0]['hand']))
+print(a['player_1']['hand'])
 
 
 
-
+b=game.play_round(a['player_1'],a['player_2'])
 
 
 
