@@ -1,5 +1,5 @@
 
-
+import random
 
 
 def create_card(rank:str,suite:str) -> dict:
@@ -32,4 +32,12 @@ def create_deck() -> list[dict]:
 
 
 def shuffle(deck:list[dict]) -> list[dict]:
-    pass
+    for rotation in range(1000):
+        randomal1=random.randint(0,51)
+        randomal2=random.randint(0,51)
+        if randomal1 != randomal2:
+            deck[randomal1],deck[randomal2]=deck[randomal2],deck[randomal1]
+        else:
+            continue
+    return deck
+
