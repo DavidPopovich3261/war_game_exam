@@ -20,7 +20,16 @@ def compare_cards(p1_card:dict, p2_card:dict) -> str:
 
 
 def create_deck() -> list[dict]:
-    pass
+    deck=[]
+    suites=['S','H','C','D']
+    ranks=['2','3','4','5','6','7','8','9','10','J','Q','K','A']
+    for rank in ranks:
+        for suite in suites:
+            deck.append(create_card(rank,suite))
+    return deck
+
+
+
 
 def shuffle(deck:list[dict]) -> list[dict]:
     pass
